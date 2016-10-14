@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<style>
+			canvas {
+						border : 1px solid #d3d3d3;
+						
+					}
+		</style>
+	</head>
+	<body onload = "startgame()">
+		<canvas id = "canvas"></canvas>
+		<script>
+			function startgame()
+			{
+				jump_ball.start();
+			}
+			var jump_ball = {
+								canvas : document.getElementById("canvas"),
+								start : function() {
+														this.canvas.height = 600;
+														this.canvas.width = 1255;
+														this.context = this.canvas.getContext("2d");
+													    document.body.insertBefore(this.canvas,document.body.childNodes[0]);
+														game_tile_1 = new component(100,25,"red",0,0);
+														game_tile_2 = new component(100,25,"red",105,0);
+														game_tile_3 = new component(100,25,"red",210,0);
+														game_tile_4 = new component(100,25,"red",315,0);
+														game_tile_5 = new component(100,25,"red",420,0);
+														game_tile_6 = new component(100,25,"red",525,0);
+														game_tile_7 = new component(100,25,"red",630,0);
+														game_tile_8 = new component(100,25,"red",735,0);
+														game_tile_9 = new component(100,25,"red",840,0);
+														game_tile_10 = new component(100,25,"red",945,0);
+														game_tile_11 = new component(100,25,"red",1050,0);
+														game_tile_12 = new component(100,25,"red",1155,0);
+														game_tile_13 = new component(100,25,"red",50,30);
+														game_tile_14 = new component(100,25,"red",155,30);
+														game_tile_15 = new component(100,25,"red",260,30);
+														game_tile_16 = new component(100,25,"red",365,30);
+														game_tile_17 = new component(100,25,"red",470,30);
+														game_tile_18 = new component(100,25,"red",575,30);
+														game_tile_19 = new component(100,25,"red",680,30);
+														game_tile_20 = new component(100,25,"red",785,30);
+														game_tile_21 = new component(100,25,"red",890,30);
+														game_tile_22 = new component(100,25,"red",995,30);
+														game_tile_23 = new component(100,25,"red",1100,30);
+														game_tile_24 = new component(100,25,"red",100,60);
+														game_tile_25 = new component(100,25,"red",205,60);
+														game_tile_26 = new component(100,25,"red",310,60);
+														game_tile_27 = new component(100,25,"red",415,60);
+														game_tile_28 = new component(100,25,"red",520,60);
+														game_tile_29 = new component(100,25,"red",625,60);
+														game_tile_30 = new component(100,25,"red",730,60);
+														game_tile_31 = new component(100,25,"red",835,60);
+														game_tile_32 = new component(100,25,"red",940,60);
+														game_tile_33 = new component(100,25,"red",1045,60);
+														jumpingball = new component(25,25,"blue",600,530);
+														bottom_tile = new component(1255,5,"blue",0,555);
+												   },
+								clear : function(){
+														this.context.clearRect(0,0,this.canvas.width,this.canvas.height);
+												  }
+							}
+			function component(width,height,color,x,y)
+			{
+				this.width = width;
+				this.height = height;
+				this.x =x;
+				this.y = y;
+				this.add = -1;
+				ctx = jump_ball.context;
+				ctx.fillStyle = color;
+				ctx.fillRect(this.x,this.y,this.width,this.height);
+			}
+		</script>
+	</body>
+</html>
