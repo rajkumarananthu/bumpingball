@@ -12,11 +12,11 @@
 		<script>
 			function startgame()
 			{
-				jump_ball.start();
+				jump_ball.draw();
 			}
 			var jump_ball = {
 								canvas : document.getElementById("canvas"),
-								start : function() {
+								draw : function() {
 														this.canvas.height = 600;
 														this.canvas.width = 1255;
 														this.context = this.canvas.getContext("2d");
@@ -59,19 +59,100 @@
 												   },
 								clear : function(){
 														this.context.clearRect(0,0,this.canvas.width,this.canvas.height);
+												  },
+								start : function(){
+														this.interval = setInterval(updateGame,10);
 												  }
-							}
+							};
+
 			function component(width,height,color,x,y)
 			{
 				this.width = width;
 				this.height = height;
 				this.x =x;
 				this.y = y;
-				this.add = -1;
+				this.addx = -1;
+				this.addy = -1;
+				this.valid = 1;
 				ctx = jump_ball.context;
 				ctx.fillStyle = color;
 				ctx.fillRect(this.x,this.y,this.width,this.height);
+				this.updatexy = function(){
+										if(this.x == 0)
+											this.addx = 1;
+										if(this.y == 0)
+											this.addy = 1;
+										if((this.y+this.height) ==600)
+											this.addy = -1;
+										if ((this.x+this.width)==1255)
+											this.addx = -1;
+										this.x = this.x+this.addx;
+										this.y = this.y+this.addy;
+										ctx = jump_ball.context;
+										ctx.fillStyle = color;
+										ctx.fillRect(this.x,this.y,this.width,this.height);
+									  };
+				this.update = function(){
+											ctx = jump_ball.context;
+											ctx.fillStyle = color;
+											if(this.valid == 1)
+												{
+													ctx.fillRect(this.x,this.y,this.width,this.height);
+												}
+										};
+				
+			}
+			function startGame()
+			{
+				jump_ball.start();
+			}
+			function resetGame()
+			{
+				jump_ball.clear();
+				jump_ball.draw();
+			}
+			function updateGame()
+			{
+				jump_ball.clear();
+				jumpingball.updatexy();
+				game_tile_1.update();
+				game_tile_2.update();
+				game_tile_3.update();
+				game_tile_4.update();
+				game_tile_5.update();
+				game_tile_6.update();
+				game_tile_7.update();
+				game_tile_8.update();
+				game_tile_9.update();
+				game_tile_10.update();
+				game_tile_11.update();
+				game_tile_12.update();
+				game_tile_13.update();
+				game_tile_14.update();
+				game_tile_15.update();
+				game_tile_16.update();
+				game_tile_17.update();
+				game_tile_18.update();
+				game_tile_19.update();
+				game_tile_20.update();
+				game_tile_21.update();
+				game_tile_22.update();
+				game_tile_23.update();
+				game_tile_24.update();
+				game_tile_25.update();
+				game_tile_26.update();
+				game_tile_27.update();
+				game_tile_28.update();
+				game_tile_29.update();
+				game_tile_30.update();
+				game_tile_31.update();
+				game_tile_32.update();
+				game_tile_33.update();
+				bottom_tile.update();
 			}
 		</script>
+		<br />
+		<input type = "button" value = "start" onclick = "startGame()"></input> 
+		<!--input type = "button" value = "ResetGame" onclick = "resetGame()" ></input-->
 	</body>
 </html>
