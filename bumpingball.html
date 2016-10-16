@@ -54,14 +54,16 @@
 														game_tile_31 = new component(100,25,"red",835,60);
 														game_tile_32 = new component(100,25,"red",940,60);
 														game_tile_33 = new component(100,25,"red",1045,60);
-														jumpingball = new component(25,25,"blue",600,530);
-														bottom_tile = new component(1255,5,"blue",0,555);
+														bottom_tile_x = Math.floor(Math.random()*1200);
+														bottom_tile_y = 555;
+														jumpingball = new component(25,25,"blue",bottom_tile_x+40,bottom_tile_y - 25);
+														bottom_tile = new component(100,5,"blue",bottom_tile_x,bottom_tile_y);
 												   },
 								clear : function(){
 														this.context.clearRect(0,0,this.canvas.width,this.canvas.height);
 												  },
 								start : function(){
-														this.interval = setInterval(updateGame,10);
+														this.interval = setInterval(updateGame,5);
 												  }
 							};
 
@@ -806,6 +808,11 @@
 					game_tile_33.valid = 0 ;
 					jumpingball.addx = -1 * jumpingball.addx;
 				}
+				/*bottom_tile*/
+				if(jumpingball.y+jumpingball.height == bottom_tile.y && (jumpingball.x >= bottom_tile.x - jumpingball.width && jumpingball.x <= bottom_tile.x + bottom_tile.width))
+				{
+					jumpingball.addy = -1 * jumpingball.addy;
+				}
 				/*drawing the updated tiles*/
 				jumpingball.updatexy();
 				game_tile_1.update();
@@ -843,9 +850,19 @@
 				game_tile_33.update();
 				bottom_tile.update();
 			}
+			function movRight()
+			{
+				bottom_tile.x = bottom_tile.x + 50;
+			}
+			function movLeft()
+			{
+				bottom_tile.x = bottom_tile.x - 50;
+			}
 		</script>
 		<br />
 		<input type = "button" value = "start" onclick = "startGame()"></input> 
+		<input type = "button" value ="<" onclick = "movLeft()" ></input>
+		<input type= "button" value = ">" onclick = "movRight()"></input>
 		<!--input type = "button" value = "ResetGame" onclick = "resetGame()" ></input-->
 	</body>
 </html>
