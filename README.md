@@ -7,3 +7,6 @@ whenever the jumping ball touches a tile at the top, that tile gets disappeared.
 when the user clicks start the game gets started.
 and when the user want to restart the game, just reload the page.
 
+to move the bottom tile use < and > arrow buttons in the page 
+
+
